@@ -14,3 +14,5 @@ RUN apt-get install -y openjdk-$JDK_VERSION-jdk
 # Set java environment
 ENV JAVA_HOME /usr/lib/jvm/java-$JDK_VERSION-openjdk-amd64
 ENV PATH $PATH:$JAVA_HOME/bin
+
+CMD ["java", "-version"]
