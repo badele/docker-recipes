@@ -14,7 +14,7 @@ Run this only one time
 
 Launching the namenode and 3 datanodes with below command
 
-    docker-compose up
+    docker-compose up -d
 
 ### Put data in the HDFS
 
