@@ -18,4 +18,50 @@ Launching the namenode and 3 datanodes with below command
 
 ### Put data in the HDFS
 
-   hadoop fs -put local_filename hdfs://localhost/
+    hadoop fs -put local_filename hdfs://localhost/
+
+### docker-compose.yml
+
+    namenode:
+      build: .
+      hostname: namenode
+      volumes:
+        - /docker_shared/debian-hadoop/namenode:/shared
+      ports:
+        - "8020:8020"
+        - "50070:50070"
+      command: hdfs namenode
+
+
+    datanode1:
+      build: .
+      hostname: datanode1
+      volumes:
+          - /docker_shared/debian-hadoop/datanode1:/shared
+      links:
+          - namenode
+      ports:
+          - "5001:50075"
+      command: hdfs datanode
+
+    datanode2:
+      build: .
+      hostname: datanode2
+      volumes:
+          - /docker_shared/debian-hadoop/datanode2:/shared
+      links:
+          - namenode
+      ports:
+          - "5002:50075"
+      command: hdfs datanode
+
+    datanode3:
+      build: .
+      hostname: datanode3
+      volumes:
+          - /docker_shared/debian-hadoop/datanode3:/shared
+      links:
+          - namenode
+      ports:
+          - "5003:50075"
+      command: hdfs datanode
