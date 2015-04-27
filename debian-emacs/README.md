@@ -1,19 +1,19 @@
 # A emacs docker running in X11 & can edit a host files
 
 This emacs container, can edit a files from a host directory. This emacs version contains :
-  - git manager (magit)
-  - auto-complete
-  - yasnippet
-  - Python dev environement
-    - flymake
-    - rope
-    - pep8
-  - nxhtml
-  - color-theme & solarized
-  - grapviz-dot-mode
-  - pkgbuild-mode (for archlinux)
-  - smex (most frequently history commande, IDO extenssion)
-  - projectile (files project interaction)
+    - git manager (magit)
+    - auto-complete
+    - yasnippet
+    - Python dev environement
+      - flymake
+      - rope
+      - pep8
+    - nxhtml
+    - color-theme & solarized
+    - grapviz-dot-mode
+    - pkgbuild-mode (for archlinux)
+    - smex (most frequently history commande, IDO extenssion)
+    - projectile (files project interaction)
 
 **Note**: you can edit .emacs.el for adding or removing a plugins
  
@@ -41,3 +41,8 @@ You can now edit a host files from a emacs container
 
     cd directory file location
     ed
+
+**Inspired by :**
+
+ * http://www.christopherbiscardi.com/2014/10/17/emacs-in-docker/
+ * http://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container
