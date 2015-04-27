@@ -25,17 +25,17 @@ This emacs container, can edit a files from a host directory. This emacs version
 When Emacs is launched for the first time, it install the plugins, this may take time.
 
     XSOCK=/tmp/.X11-unix/X0
-    docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  emacs 
+    docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  badele/debian-emacs 
 
 ### Test edit file
 
-    docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  -v `pwd`:/files emacs emacs /files
+    docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  -v `pwd`:/files badele/debian-emacs emacs /files
 
 ### Add the shorcut in the .zshrc
 
     export XSOCK=/tmp/.X11-unix/X0
     ed(){
-        docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  -v `pwd`:/files emacs emacs /files
+        docker run -ti --rm  -v $XSOCK:$XSOCK -v /docker_shared/debian-emacs/root/.emacs.d:/root/.emacs.d  -v `pwd`:/files badele/debian-emacs emacs /files
     }
 
 You can now edit a host files from a emacs container
