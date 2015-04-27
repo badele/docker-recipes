@@ -1,6 +1,7 @@
 # A emacs docker running in X11 & can edit a host files
 
 This emacs container, can edit a files from a host directory. This emacs version contains :
+
     - git manager (magit)
     - auto-complete
     - yasnippet
