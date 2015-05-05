@@ -6,7 +6,7 @@ From the host, you can use this command
 
 or 
 
-    $ docker run --rm -v `pwd`:/files:ro badele/alpine-gitcheck cd /files && gitcheck OPTIONS
+    $ docker run --rm -v `pwd`:/files:ro badele/alpine-gitcheck sh -c "cd /files && gitcheck OPTIONS"
 
 You can also create a shell function, exemple for ZSH
 
