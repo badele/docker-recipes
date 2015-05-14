@@ -14,4 +14,7 @@ RUN pacman --noconfirm -Syyu
 RUN pacman-db-upgrade
 RUN pacman --noconfirm -S yaourt rsync
 
+# Clean the packages cache
+RUN rm -f /var/cache/pacman/pkg/*
+
 CMD bash
