@@ -1,6 +1,8 @@
 FROM base/archlinux
 MAINTAINER Bruno Adelé "bruno@adele.im"
 
+ENV DISPLAY :0
+
 # Add yaourt packages repository
 ADD pacman.conf /etc/pacman.conf
 
