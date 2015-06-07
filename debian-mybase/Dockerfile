@@ -12,7 +12,7 @@ RUN apt-get -yf upgrade
 RUN apt-get -yf dist-upgrade
 
 # Requirement package
-RUN apt-get -y install wget
+RUN apt-get -y install wget nano
 
 # Clean the cache and unused packages
 RUN apt-get clean
