@@ -1,0 +1,2 @@
+root ALL=(ALL) ALL
+arch ALL=(ALL) NOPASSWD: ALL
