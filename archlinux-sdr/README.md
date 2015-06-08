@@ -4,7 +4,12 @@
 
 This SDR container contains:
 
-    - gnuradio
+    - RTL-SDR
+    - GNU Radio
+    - SDRHunter
+    - Python2
+    - gcc
+    - SDRHunter
 
 ## How to use
 
