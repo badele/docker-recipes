@@ -1,0 +1,34 @@
+salt:
+  image: salt-master
+  hostname: salt
+  volumes:
+    - /etc/salt
+    - /srv/salt
+  command: salt-master
+
+minion1:
+  image: salt-minion
+  hostname: minion1
+  volumes:
+    - /etc/salt
+  links:
+    - salt
+  command: salt-minion
+
+minion2:
+  image: salt-minion
+  hostname: minion2
+  volumes:
+    - /etc/salt
+  links:
+    - salt
+  command: salt-minion
+
+minion3:
+  image: salt-minion
+  hostname: minion3
+  volumes:
+    - /etc/salt
+  links:
+    - salt
+  command: salt-minion
