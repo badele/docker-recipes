@@ -1,0 +1,20 @@
+mqttserver:
+  build: .
+  hostname: mqttserver
+  command: /usr/sbin/mosquitto
+  ports:
+    - "1883:1883"
+
+mqttpub:
+  build: .
+  hostname: mqttpub
+  links:
+    - mqttserver
+  command: sleep 1000
+
+mqttsub:
+  build: .
+  hostname: mqttsub
+  links:
+    - mqttserver
+  command: sleep 1000
