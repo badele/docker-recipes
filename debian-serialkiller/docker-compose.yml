@@ -1,0 +1,9 @@
+mqttpub:
+  build: .
+  hostname: mqttpub
+  command: sleep 1000
+
+mqttsub:
+  build: .
+  hostname: mqttsub
+  command: sleep 1000
