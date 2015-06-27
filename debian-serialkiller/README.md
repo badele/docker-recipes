@@ -1,7 +1,7 @@
 # A mosquitto mqtt broker
 
 
-A mosquitto server + publisher + subscriber configuration.
+A serialkiller docker container
 
 ## How to use
 
@@ -10,14 +10,8 @@ A mosquitto server + publisher + subscriber configuration.
 Start the dockers containers
 
     # Start the dockers
-    $ docker-compose up -d
-
-    # Open the two terminals
-    $ docker exec -ti debianmqtt_mqttpub_1 bash
-    $ docker exec -ti debianmqtt_mqttsub_1 bash
-
-    # On subscriber terminal
-    $ mosquitto_sub -h test.mosquitto.org -t "labsud/#" -v
-
-    # On published terminal
+    $ docker run -ti --rm --name serialkiller -p 3000:3000 badele/debian-serialkiller
+    
+    # On another terminal
+    $ docker exec -ti serialkiller bash
     $ python3 /usr/local/bin/weather_montpellier.py
