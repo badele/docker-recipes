@@ -20,4 +20,4 @@ Start the dockers containers
     $ mosquitto_sub -h mqttserver -t "#"
 
     # On published terminal
-    $ mosquitto_pub -h mqttserver -t "/home/root" -m "coucou"
+    $ mosquitto_pub -h mqttserver -t "/home/root" -m "hello world"
