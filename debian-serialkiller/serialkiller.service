@@ -1,0 +1,12 @@
+[Unit]
+Description=serialkiller container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run -i --rm --name serialkiller -a stdout -a stderr badele/debian-serialkiller
+ExecStop=/usr/bin/docker stop serialkiller
+
+[Install]
+WantedBy=local.target

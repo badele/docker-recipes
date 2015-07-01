@@ -15,8 +15,13 @@ RUN apt-get install -y curl
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 RUN apt-get install -y nodejs
 
+#SQLite3
+RUN apt-get install -y sqlite3
+
+
 # Add files
-ADD files/serialkiller/weather_montpellier.py /usr/local/bin/weather_montpellier.py
+ADD files/serialkiller/mqtt/pub/weather_montpellier.py /usr/local/bin/
+ADD files/serialkiller/mqtt/pub/currenttime.py /usr/local/bin/
 ADD files/nodejs/server.js /var/www/
 ADD files/supervisord/ /etc/supervisor/conf.d/
 
