@@ -7,31 +7,31 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install dev tools
 RUN apt-get update
-RUN apt-get install -y wget unzip
+RUN apt-get install -y curl unzip
 
 # Create directory
 RUN mkdir /opt/openhab
 
 # Install runtime
 WORKDIR /opt/openhab
-RUN wget --no-check-certificate https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-runtime.zip
+RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-runtime.zip
 RUN unzip distribution-1.7.0-runtime.zip
 RUN rm distribution-1.7.0-runtime.zip
 
 # Install addons
 WORKDIR /opt/openhab/addons
-RUN wget --no-check-certificate https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-addons.zip
+RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-addons.zip
 RUN unzip distribution-1.7.0-addons.zip
 RUN rm distribution-1.7.0-addons.zip
 
 # Install demo
 WORKDIR /opt/openhab
-RUN wget --no-check-certificate https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-demo-configuration.zip
+RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-demo-configuration.zip
 RUN unzip -o distribution-1.7.0-demo-configuration.zip
 RUN rm distribution-1.7.0-demo-configuration.zip
 
 # Install designer
-RUN wget --no-check-certificate https://github.com/cdjackson/HABmin/releases/download/0.1.3-snapshot/habmin.zip
+RUN curl -LO https://github.com/cdjackson/HABmin/releases/download/0.1.3-snapshot/habmin.zip
 RUN unzip habmin.zip
 
 # Configure openHAB
