@@ -1,6 +1,6 @@
 # openHAB demo
 
-A openHAB docker container
+A fully functional openHAB demo docker container
 
 ## How to use
 
