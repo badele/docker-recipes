@@ -20,9 +20,9 @@ RUN rm distribution-1.7.0-runtime.zip
 
 # Install addons
 WORKDIR /opt/openhab/addons
-RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-addons.zip
-RUN unzip distribution-1.7.0-addons.zip
-RUN rm distribution-1.7.0-addons.zip
+#RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-addons.zip
+#RUN unzip distribution-1.7.0-addons.zip
+#RUN rm distribution-1.7.0-addons.zip
 
 # Install demo
 WORKDIR /opt/openhab
@@ -35,7 +35,7 @@ RUN curl -LO https://github.com/cdjackson/HABmin/releases/download/0.1.3-snapsho
 RUN unzip habmin.zip
 
 # Configure openHAB
-RUN cp configurations/openhab_default.cfg configurations/openhab.cfg
+#RUN cp configurations/openhab_default.cfg configurations/openhab.cfg
 RUN mv configurations/sitemaps/demo.sitemap configurations/sitemaps/default.sitemap
 RUN chmod +x start.sh
 
