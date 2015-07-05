@@ -1,0 +1,18 @@
+sitemap demo label="Demo House"
+{
+    Frame label="http addons"{
+        Text item=http_myip
+        Text item=http_season
+        Text item=http_weekend
+        Text item=http_paris_hpa
+        Text item=http_montpellier_hpa
+    }
+
+    Frame label="ntp addons"{
+        Text item=ntp_date
+    }
+
+    Frame label="exec addons"{
+        Text item=exec_loadaverage
+    }
+}
