@@ -1,0 +1,9 @@
+sitea:
+  build .
+  hostname: sitea
+  command: start.sh sitea
+
+siteb:
+  build .
+  hostname: siteb
+  command: start.sh siteb
