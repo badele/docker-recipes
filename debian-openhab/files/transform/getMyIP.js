@@ -1,1 +1,1 @@
-JSON.parse(input).myip.toString();
+JSON.parse(input).myip;

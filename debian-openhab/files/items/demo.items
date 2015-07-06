@@ -6,5 +6,10 @@ String  http_weekend       "French week-end [%s]"     <calendar>   (grp_http)   
 Number  http_paris_hpa       "Paris hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/paris/pressure/today/json:60000:JS(getPressure.js)]" }
 Number  http_montpellier_hpa       "Montpellier hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/montpellier/pressure/today/json:60000:JS(getPressure.js)]" }
 
-DateTime        ntp_date      "Demo Date [%1$ta %1$tR]"      <calendar>      (Demo)  { ntp="Europe/Paris:fr_FR" }
-Number  exec_loadaverage       "Demo Load Average [%.3f]" <chart> (Demo) { exec="<[/bin/sh@@-c@@uptime | awk '{ print $10 }':]" }
+/* date demo */
+Group   grp_date   (All)
+DateTime        ntp_date      "Current Date [%1$ta %1$tR]"      <calendar>      (grp_date)  { ntp="Europe/Paris:fr_FR" }
+
+/* exec demo */
+Group   grp_exec   (All)
+Number  exec_loadaverage       "Load Average [%.3f]" <chart> (grp_exec) { exec="<[/bin/sh@@-c@@uptime | awk '{ print $10 }':]" }
