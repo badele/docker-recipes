@@ -15,4 +15,8 @@ sitemap demo label="Demo House"
     Frame label="exec addons"{
         Text item=exec_loadaverage
     }
+
+    Frame label="mqtt addons"{
+        Text item=mqtt_currenttime
+    }
 }

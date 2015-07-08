@@ -43,6 +43,7 @@ RUN rm distribution-1.7.0-addons.zip
 RUN mv org.openhab.binding.http* ../addons/
 RUN mv org.openhab.binding.ntp* ../addons/
 RUN mv org.openhab.binding.exec* ../addons/
+RUN mv org.openhab.*mqtt* ../addons/
 
 # Install demo
 WORKDIR /opt/openhab

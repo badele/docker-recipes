@@ -13,3 +13,7 @@ DateTime        ntp_date      "Current Date [%1$ta %1$tR]"      <calendar>      
 /* exec demo */
 Group   grp_exec   (All)
 Number  exec_loadaverage       "Load Average [%.3f]" <chart> (grp_exec) { exec="<[/bin/sh@@-c@@uptime | awk '{ print $10 }':60000:REGEX((.*?))]" }
+
+/* mqtt demo */
+Group   grp_mqtt   (All)
+Number mqtt_time "Current time" <calendar> {mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
