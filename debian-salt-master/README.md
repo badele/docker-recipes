@@ -6,7 +6,14 @@ A salt configuration for learn the salt master + minion configuration.
 
 ### Start & Configure
 
-Start the salt configuration (master + minion)
+
+#### Start witch docker
+
+    $ docker-compose up -d
+    $ docker exec -ti debiansaltmaster_salt_1  bash
+
+
+#### Start with docker-compose (master + minion)
 
     $ docker-compose up -d
     $ docker exec -ti debiansaltmaster_salt_1  bash

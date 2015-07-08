@@ -2,7 +2,7 @@ FROM badele/debian-mybase
 MAINTAINER Bruno Adelé "bruno@adele.im"
 
 
-# add salt repository & Upgrade the distribution
+# Add salt repository & Upgrade the distribution
 RUN echo "deb http://debian.saltstack.com/debian jessie-saltstack main" >> /etc/apt/sources.list
 RUN wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 RUN apt-get update
@@ -18,6 +18,6 @@ RUN apt-get clean
 RUN apt-get autoremove
 
 # Volume can be backuped
-VOLUME ["/etc/salt" "/var/cache/salt"]
+VOLUME ["/etc/salt" "/var/cache/salt" "/srv/salt]
 
 CMD bash
