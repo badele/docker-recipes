@@ -19,8 +19,6 @@ RUN unzip distribution-1.7.0-runtime.zip
 RUN rm distribution-1.7.0-runtime.zip
 
 
-
-
 #RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-demo-configuration.zip
 #RUN unzip -o distribution-1.7.0-demo-configuration.zip
 #RUN rm distribution-1.7.0-demo-configuration.zip
@@ -30,7 +28,7 @@ RUN curl -LO https://github.com/cdjackson/HABmin/releases/download/0.1.3-snapsho
 RUN unzip habmin.zip
 
 # Configure openHAB
-RUN cp configurations/openhab_default.cfg configurations/openhab.cfg
+ADD files/configurations/ configurations/
 #RUN mv configurations/sitemaps/demo.sitemap configurations/sitemaps/default.sitemap
 RUN chmod +x start.sh
 
