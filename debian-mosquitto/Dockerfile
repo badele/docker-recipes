@@ -1,6 +1,8 @@
 FROM badele/debian-mybase
 MAINTAINER Bruno Adelé "bruno@adele.im"
 
+# Mosquitto
+RUN apt-get install -y mosquitto mosquitto-clients
 
-# Install mosquitto
-RUN apt-get install -y mosquitto mosquitto-clients python3 python-mosquitto
+# Python3 stack
+RUN apt-get install -y python3 python3-mosquitto python3-pip
