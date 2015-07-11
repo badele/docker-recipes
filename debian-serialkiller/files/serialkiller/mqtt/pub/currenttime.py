@@ -38,7 +38,6 @@ def main():
     while 1 == 1:
         result = get_currenttime()
         if result['apihash'] != OLDHASH:
-            print (result)
             OLDHASH = result['apihash']
             mqttc.publish("/labsud/city/currenttime", json.dumps(result))
         time.sleep(5)

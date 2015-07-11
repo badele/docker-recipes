@@ -25,21 +25,18 @@ def _check_md5file(filename):
 
 
 def main():
-    HASH=""
+    OLDHASH=""
 
     mqttc = mosquitto.Mosquitto()
     mqttc.connect("test.mosquitto.org")
-    mqttc.publish("labsud/", "Start application")
 
     while 1 == 1:
-        apiresult = get_weather()
-        myhash = (hash(frozenset(apiresult)))
-        if myhash != HASH:
-            HASH = myhash
-            print(json.dumps(apiresult))
-            mqttc.publish("labsud/weather", json.dumps(apiresult))
+        result = get_weather()
+        myhash = (hash(frozenset(result)))
+        if myhash != OLDHASH:
+            OLDHASH = myhash
+            mqttc.publish("/labsud/city/weather", json.dumps(result))
         time.sleep(10)
-
 
 
 if __name__ == "__main__":
