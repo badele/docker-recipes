@@ -53,6 +53,7 @@ ADD files/rules/ configurations/rules/
 ADD files/scripts/ configurations/scripts/
 ADD files/sitemaps/ configurations/sitemaps/
 ADD files/transform/ configurations/transform/
+ADD files/configurations/ configurations/
 
 VOLUME [ /opt/openhab ]
 EXPOSE 8080 8443 5555 9001

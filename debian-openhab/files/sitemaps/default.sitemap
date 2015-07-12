@@ -17,6 +17,6 @@ sitemap demo label="Demo House"
     }
 
     Frame label="mqtt addons"{
-        Text item=mqtt_currenttime
+        Text item=mqtt_time
     }
 }
