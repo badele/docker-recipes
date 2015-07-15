@@ -12,7 +12,7 @@ RUN apt-get -yf upgrade
 RUN apt-get -yf dist-upgrade
 
 # Requirement package
-RUN apt-get -y install wget nano git
+RUN apt-get -y install apt-utils curl nano git
 
 # Clean the cache and unused packages
 RUN apt-get clean
