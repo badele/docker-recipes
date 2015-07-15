@@ -1,0 +1,22 @@
+cassandranode1:
+  build: .
+  hostname: cassandranode1
+  command: cassandra -f
+
+cassandranode2:
+  build: .
+  hostname: cassandranode2
+  links:
+      - cassandranode1
+      - cassandranode3
+  command: cassandra -f
+
+cassandranode3:
+  build: .
+  hostname: cassandranode3
+  links:
+      - cassandranode1
+      - cassandranode2
+  command: cassandra -f
+
+  #-D cassandra.storage_port=17000 -D cassandra.ssl_storage_port=17001 -D cassandra.native_transport_port=9042 -D cassandra.rpc_port=9160
