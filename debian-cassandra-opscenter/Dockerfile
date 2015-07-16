@@ -11,12 +11,16 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get install -y nano curl libjna-java ntp python2.7
 
-# Install Cassandra
+# Install opscenter
 RUN echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/sources.list.d/cassandra.sources.list
 RUN curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 RUN apt-get update
 RUN apt-get install -y opscenter
 
-CMD /etc/init.d/opscenterd start && tail -f /var/log/opscenter/opscenterd.log
+# opscenter configuration
+ADD files/etc/opscenter/clusters/ /etc/opscenter/clusters/
 
 EXPOSE 8888 61620
+
+CMD /etc/init.d/opscenterd start && tail -f /var/log/opscenter/opscenterd.log
+
