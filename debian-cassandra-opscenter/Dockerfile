@@ -19,8 +19,10 @@ RUN apt-get install -y opscenter
 
 # opscenter configuration
 ADD files/etc/opscenter/clusters/ /etc/opscenter/clusters/
+ADD files/usr/local/bin/ /usr/local/bin
+RUN chmod 755 /usr/local/bin/opscenter.sh
 
 EXPOSE 8888 61620
 
-CMD /etc/init.d/opscenterd start && tail -f /var/log/opscenter/opscenterd.log
+CMD opscenter.sh
 
