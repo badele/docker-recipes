@@ -1,12 +1,13 @@
 seed1:
-  build: .
+  #build: .
+  image: badele/debian-cassandra
   hostname: seed1
   expose:
     - "7199"
     - "9160"
 
 node1:
-  build: .
+  #build: .
   hostname: node1
   links:
       - seed1
@@ -15,7 +16,8 @@ node1:
     - "9160"
 
 seed2:
-  build: .
+  #build: .
+  image: badele/debian-cassandra
   hostname: seed2
   links:
       - seed1
@@ -24,7 +26,8 @@ seed2:
     - "9160"
 
 node2:
-  build: .
+  #build: .
+  image: badele/debian-cassandra
   hostname: node1
   links:
       - seed2
@@ -33,6 +36,7 @@ node2:
     - "9160"
 
 manager:
+  #build: ../debian-cassandra-opscenter/
   image: badele/debian-cassandra-opscenter
   hostname: manager
   links:

@@ -20,8 +20,12 @@ RUN apt-get install -y dsc20=2.0.11-1 cassandra=2.0.11 datastax-agent=5.2.0
 # Init cassandra for debian
 RUN service cassandra stop
 RUN rm -rf /var/lib/cassandra/data/system/*
-ADD files/etc/cassandra/* /etc/cassandra/
 
-CMD service datastax-agent start && cassandra -f
+# Copy files
+ADD files/etc/cassandra/* /etc/cassandra/
+ADD files/usr/local/bin/ /usr/local/bin
+RUN chmod 755 /usr/local/bin/cassandra.sh
+
+CMD cassandra.sh
 
 EXPOSE 7000 7199 9160
