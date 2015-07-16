@@ -1,29 +1,47 @@
 seed1:
   build: .
   hostname: seed1
-  command: cassandra -f
+  expose:
+    - "7199"
+    - "9160"
 
 node1:
   build: .
   hostname: node1
   links:
       - seed1
-  command: cassandra -f
+  expose:
+    - "7199"
+    - "9160"
 
 seed2:
   build: .
-  hostname: cassandranode3
+  hostname: seed2
   links:
       - seed1
-  command: cassandra -f
+  expose:
+    - "7199"
+    - "9160"
 
 node2:
   build: .
   hostname: node1
   links:
       - seed2
-  command: cassandra -f
+  expose:
+    - "7199"
+    - "9160"
 
+manager:
+  image: badele/debian-cassandra-opscenter
+  hostname: manager
+  links:
+      - seed1
+      - seed2
+      - node1
+      - node2
+  ports:
+    - "8888:8888"
 
 
   #-D cassandra.storage_port=17000 -D cassandra.ssl_storage_port=17001 -D cassandra.native_transport_port=9042 -D cassandra.rpc_port=9160

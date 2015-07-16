@@ -1,13 +1,14 @@
-# Cassandra storage config YAML 
-
-cluster_name: 'cluster-demo'
+# Customized config YAML for docker container
+cluster_name: 'docker-cassandra'
 listen_address:
+rpc_address:
 
 seed_provider:
-    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
-      parameters:
-          - seeds: "cassandranode1, cassandranode2, cassandranode3"
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: "seed1, seed2"
 
+# Cassandra storage config YAML
 # NOTE:
 #   See http://wiki.apache.org/cassandra/StorageConfiguration for
 #   full explanations of configuration directives
@@ -341,7 +342,7 @@ start_rpc: true
 # Note that unlike ListenAddress above, it is allowed to specify 0.0.0.0
 # here if you want to listen on all interfaces, but that will break clients 
 # that rely on node auto-discovery.
-rpc_address: localhost
+#rpc_address: localhost
 # port for Thrift to listen for clients on
 rpc_port: 9160
 
