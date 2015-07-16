@@ -21,6 +21,8 @@ With your navigator goto to http://localhost:8888/
 
 ## Manage with nodetools
 
+This bellow command is valid for seed1, seed2, node1, node2
+
     docker exec -ti debiancassandra_seed1_1 bash
     # in the seed1 docker container
     nodetool status
