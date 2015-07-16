@@ -16,3 +16,7 @@ RUN echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/ap
 RUN curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 RUN apt-get update
 RUN apt-get install -y opscenter
+
+CMD /etc/init.d/opscenterd start && tail -f /var/log/opscenter/opscenterd.log
+
+EXPOSE 8888 61620
