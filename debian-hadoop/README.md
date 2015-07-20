@@ -23,7 +23,7 @@ Launching the namenode and 3 datanodes with below command
 ### docker-compose.yml
 
     namenode:
-      build: .
+      image: badele/debian-hadoop
       hostname: namenode
       volumes:
         - /docker_shared/debian-hadoop/namenode:/shared
@@ -34,7 +34,7 @@ Launching the namenode and 3 datanodes with below command
 
 
     datanode1:
-      build: .
+      image: badele/debian-hadoop
       hostname: datanode1
       volumes:
           - /docker_shared/debian-hadoop/datanode1:/shared
@@ -45,7 +45,7 @@ Launching the namenode and 3 datanodes with below command
       command: hdfs datanode
 
     datanode2:
-      build: .
+      image: badele/debian-hadoop
       hostname: datanode2
       volumes:
           - /docker_shared/debian-hadoop/datanode2:/shared
@@ -56,7 +56,7 @@ Launching the namenode and 3 datanodes with below command
       command: hdfs datanode
 
     datanode3:
-      build: .
+      image: badele/debian-hadoop
       hostname: datanode3
       volumes:
           - /docker_shared/debian-hadoop/datanode3:/shared
