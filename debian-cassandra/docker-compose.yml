@@ -28,7 +28,7 @@ seed2:
 node2:
   build: .
   #image: badele/debian-cassandra
-  hostname: node1
+  hostname: node2
   links:
       - seed2
   expose:
