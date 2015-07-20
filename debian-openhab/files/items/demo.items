@@ -16,4 +16,4 @@ Number  exec_loadaverage       "Load Average [%.3f]" <chart> (grp_exec) { exec="
 
 /* mqtt demo */
 Group   grp_mqtt   (All)
-Number mqtt_time "Current time" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
+Number mqtt_time "Current time [%d TS]" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
