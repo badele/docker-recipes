@@ -26,6 +26,10 @@ ADD files/etc/cassandra/* /etc/cassandra/
 ADD files/usr/local/bin/ /usr/local/bin
 RUN chmod 755 /usr/local/bin/cassandra.sh
 
-CMD cassandra.sh
+# set bash variable for cqlsh client
+RUN echo "export CQLSH_HOST=\$HOSTNAME" >> /root/.bashrc
 
 EXPOSE 7000 7199 9160
+
+CMD cassandra.sh
+
