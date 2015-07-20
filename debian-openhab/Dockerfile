@@ -44,6 +44,7 @@ RUN mv org.openhab.binding.http* ../addons/
 RUN mv org.openhab.binding.ntp* ../addons/
 RUN mv org.openhab.binding.exec* ../addons/
 RUN mv org.openhab.*mqtt* ../addons/
+RUN mv org.openhab.persistence.* ../addons/
 
 # Install demo
 WORKDIR /opt/openhab
