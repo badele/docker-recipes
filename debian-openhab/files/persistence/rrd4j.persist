@@ -5,5 +5,6 @@ Strategies {
 }
 
 Items {
-	mqtt_time, exec_loadaverage, http_*_hpa : strategy = everyChange, everyUpdate, restoreOnStartup
+	* : strategy = everyUpdate, restoreOnStartup
+	mqtt_time : strategy = everyUpdate, everyMinute
 }
