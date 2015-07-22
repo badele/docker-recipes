@@ -15,7 +15,7 @@ RUN apt-get install -y sudo nano curl libjna-java ntp python2.7
 RUN echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/sources.list.d/cassandra.sources.list
 RUN curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 RUN apt-get update
-RUN apt-get install -y dsc20=2.0.11-1 cassandra=2.0.11 datastax-agent=5.2.0
+RUN apt-get install -y dsc21=2.1.8-1 cassandra=2.1.8 datastax-agent=5.2.0
 
 # Init cassandra for debian
 RUN service cassandra stop
