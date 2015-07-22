@@ -17,4 +17,10 @@ RUN apt-get install -y nodejs build-essential
 RUN apt-get clean
 RUN apt-get autoremove
 
-CMD bash
+# Configure app nodejs server
+WORKDIR /srv/nodejs/
+ADD files/srv/hello/hello.js hello/
+
+EXPOSE 8080
+
+CMD node hello/hello.js
