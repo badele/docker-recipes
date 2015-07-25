@@ -4,14 +4,14 @@ import mosquitto
 import json
 import hashlib
 import time
+import datetime
 
 from urllib.request import urlopen
 
 def get_currenttime():
     result = {}
-    currenttime = int(time.time())
-    apiid = str(currenttime - (currenttime % 10))
-    apihash = _check_md5text(apiid.encode())
+    currenttime = datetime.datetime.strftime(datetime.datetime.now(), '%H:%M:%S')
+    apihash = _check_md5text(currenttime.encode())
 
     result['apihash'] = apihash
     result['currenttime'] = currenttime
