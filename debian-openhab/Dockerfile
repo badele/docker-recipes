@@ -3,13 +3,22 @@ MAINTAINER Bruno Adelé "bruno@adele.im"
 
 USER root
 ENV DEBIAN_FRONTEND noninteractive
-
+ENV DISPLAY :0
 
 # Install dev tools
 RUN apt-get update
 RUN apt-get install -y curl unzip
 
-# Create directory
+# Create directory for openhab designer
+#RUN mkdir /opt/openhab-designer
+
+# Install openhab designer
+WORKDIR /opt/openhab-designer
+RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-designer-linux64bit.zip
+RUN unzip distribution-1.7.0-designer-linux64bit.zip
+RUN rm distribution-1.7.0-designer-linux64bit.zip
+
+# Create directory for openhab
 RUN mkdir /opt/openhab
 
 # Install runtime
@@ -18,12 +27,7 @@ RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.
 RUN unzip distribution-1.7.0-runtime.zip
 RUN rm distribution-1.7.0-runtime.zip
 
-
-#RUN curl -LO https://bintray.com/artifact/download/openhab/bin/distribution-1.7.0-demo-configuration.zip
-#RUN unzip -o distribution-1.7.0-demo-configuration.zip
-#RUN rm distribution-1.7.0-demo-configuration.zip
-
-# Install designer
+# Install openhab web designer
 RUN curl -LO https://github.com/cdjackson/HABmin/releases/download/0.1.3-snapshot/habmin.zip
 RUN unzip habmin.zip
 
@@ -49,7 +53,7 @@ RUN mv org.openhab.persistence.db4o* ../addons/
 RUN mv org.openhab.persistence.logging* ../addons/
 
 
-# Install demo
+# Install my demo
 WORKDIR /opt/openhab
 ADD files/items/ configurations/items/
 ADD files/persistence/ configurations/persistence/
@@ -63,5 +67,4 @@ VOLUME [ /opt/openhab ]
 EXPOSE 8080 8443 5555 9001
 
 # Launch the server
-WORKDIR /opt/openhab/
-CMD ./start.sh
+CMD /opt/openhab/start.sh

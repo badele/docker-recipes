@@ -8,15 +8,20 @@ sitemap demo label="Demo House"
         Text item=http_montpellier_hpa
     }
 
+    Frame label="mqtt sender addons"{
+        Switch item=pushbutton
+        Switch item=switch_onoff
+    }
+
+    Frame label="mqtt receiver addons"{
+        Text item=mqtt_time
+    }
+
     Frame label="ntp addons"{
         Text item=ntp_date
     }
 
     Frame label="exec addons"{
         Text item=exec_loadaverage
-    }
-
-    Frame label="mqtt addons"{
-        Text item=mqtt_time
     }
 }

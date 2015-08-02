@@ -6,6 +6,14 @@ String  http_weekend       "French week-end [%s]"     <calendar>   (grp_http)   
 Number  http_paris_hpa       "Paris hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/paris/pressure/today/json:60000:JS(getPressure.js)]" }
 Number  http_montpellier_hpa       "Montpellier hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/montpellier/pressure/today/json:60000:JS(getPressure.js)]" }
 
+/* mqtt receiver demo */
+Group   grp_mqtt_receiver   (All)
+String mqtt_time "Current time [%s TS]" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
+
+Group   grp_mqtt_sender   (All)
+Switch pushbutton "Push Button" (grp_mqtt) {mqtt=">[test:/labsud/livingroom/pushbutton:command:ON:1],>[test:/labsud/livingroom/pushbutton:command:OFF:0]", autoupdate="false"}
+Switch switch_onoff "Switch On/Off" (grp_mqtt) {mqtt=">[test:/labsud/livingroom/switch_onoff:command:ON:1],>[test:/labsud/livingroom/switch_onoff:command:OFF:0]"}
+
 /* date demo */
 Group   grp_date   (All)
 DateTime        ntp_date      "Current Date [%1$ta %1$tR]"      <calendar>      (grp_date)  { ntp="Europe/Paris:fr_FR" }
@@ -14,6 +22,3 @@ DateTime        ntp_date      "Current Date [%1$ta %1$tR]"      <calendar>      
 Group   grp_exec   (All)
 Number  exec_loadaverage       "Load Average [%.3f]" <chart> (grp_exec) { exec="<[/bin/sh@@-c@@uptime | awk '{ print $10 }':60000:REGEX((.*?))]" }
 
-/* mqtt demo */
-Group   grp_mqtt   (All)
-Number mqtt_time "Current time [%d TS]" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
