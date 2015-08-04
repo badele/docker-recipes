@@ -1,10 +1,9 @@
 /* http demo */
 Group   grp_http   (All)
-String  http_myip       "My IP [%s]"     <house>   (grp_http)         { http="<[http://api.domogeek.fr/myip:60000:JS(getMyIP.js)]" }
-String  http_season       "North season [%s]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/season/json:60000:JS(getSeason.js)]" }
-String  http_weekend       "French week-end [%s]"     <calendar>   (grp_http)         { http="<[http://api.domogeek.fr/holidayall/A/now:60000:JS(getWeekend.js)]" }
-Number  http_paris_hpa       "Paris hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/paris/pressure/today/json:60000:JS(getPressure.js)]" }
-Number  http_montpellier_hpa       "Montpellier hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/weather/montpellier/pressure/today/json:60000:JS(getPressure.js)]" }
+String  http_myip       "My IP [%s]"     <house>   (grp_http)         { http="<[https://api.ipify.org/?format=json:60000:JS(getMyIP.js)]" }
+/*String  http_season       "North season [%s]"     <temperature>   (grp_http)         { http="<[http://api.domogeek.fr/season/json:60000:JS(getSeason.js)]" }*/
+/*String  http_weekend       "French week-end [%s]"     <calendar>   (grp_http)         { http="<[http://api.domogeek.fr/holidayall/A/now:60000:JS(getWeekend.js)]" }*/
+Number  http_montpellier_hpa       "Montpellier hPa [%.3f hPa]"     <temperature>   (grp_http)         { http="<[weathermontpellier:10000:JS(getPressure.js)]" }
 
 /* mqtt receiver demo */
 Group   grp_mqtt_receiver   (All)

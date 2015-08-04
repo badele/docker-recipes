@@ -1,1 +1,1 @@
-JSON.parse(input).pressure;
+JSON.parse(input).main.pressure;

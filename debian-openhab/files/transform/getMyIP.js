@@ -1,1 +1,1 @@
-JSON.parse(input).myip;
+JSON.parse(input).ip;
