@@ -11,7 +11,8 @@ sitemap demo label="Demo House"
     }
 
     Frame label="mqtt receiver addons"{
-        Text item=mqtt_time
+        Switch item=rcv_switch_onoff
+/*        Text item=mqtt_time*/
     }
 
     Frame label="ntp addons"{

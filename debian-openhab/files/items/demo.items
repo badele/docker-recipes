@@ -7,14 +7,15 @@ Number  http_montpellier_hpa       "Montpellier hPa [%.3f hPa]"     <temperature
 
 /* mqtt receiver demo */
 Group   grp_mqtt_receiver   (All)
-String mqtt_time "Current time [%s TS]" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}
+/*String mqtt_time "Current time [%s TS]" <calendar> (grp_mqtt) { mqtt="<[test:/labsud/city/currenttime:state:JS(getCurrenttime.js)]"}*/
+Switch rcv_switch_onoff "Receive Switch On/Off" (grp_mqtt) {mqtt="<[test:/labsud/livingroom/switch_onoff:command:ON:1],<[test:/labsud/livingroom/switch_onoff:command:OFF:0]"}
 
 Group   grp_mqtt_sender   (All)
 Switch pushbutton "Push Button" (grp_mqtt) {mqtt=">[test:/labsud/livingroom/pushbutton:command:ON:1],>[test:/labsud/livingroom/pushbutton:command:OFF:0]", autoupdate="false"}
 Switch switch_onoff "Switch On/Off" (grp_mqtt) {mqtt=">[test:/labsud/livingroom/switch_onoff:command:ON:1],>[test:/labsud/livingroom/switch_onoff:command:OFF:0]"}
 
 /* date demo */
-Group   grp_date   (All)
+Group   grp_ntp   (All)
 DateTime        ntp_date      "Current Date [%1$ta %1$tR]"      <calendar>      (grp_date)  { ntp="Europe/Paris:fr_FR" }
 
 /* exec demo */
