@@ -1,4 +1,4 @@
-# A debian python3 stack
+# A home assistant docker container
 
 ## How to use
 

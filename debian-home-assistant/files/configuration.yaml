@@ -23,6 +23,8 @@ http:
 ##########################################
 # Sensor devices
 ##########################################
+sun:
+
 sensor:
   platform: systemmonitor
   resources:
@@ -74,6 +76,9 @@ sensor 4:
 ##########################################
 # Services
 ##########################################
+introduction:
+frontend:
+discovery:
 history:
 conversation:
 logbook:
@@ -86,7 +91,6 @@ notify:
   facility: syslog
   option: pid
   priority: 0
-
 
 #mqtt:
 #  broker: http://test.mosquitto.org/
@@ -133,7 +137,7 @@ notify:
 ## A comma separated list of states that have to be tracked as a single group
 ## Grouped states should share the same type of states (ON/OFF or HOME/NOT_HOME)
 group:
-  living_room:
+  time:
     - light.Bowl
     - light.Ceiling
     - light.TV_back_light
