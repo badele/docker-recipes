@@ -138,12 +138,22 @@ notify:
 ## Grouped states should share the same type of states (ON/OFF or HOME/NOT_HOME)
 group:
   time:
-    - light.Bowl
-    - light.Ceiling
+    - sensor.time
+    - sensor.time_beat
+    - sensor.time_utc
+    - sensor.date__time
+    - sensor.date
+    - sensor.time__date
     - light.TV_back_light
-  children:
-   - device_tracker.child_1
-   - device_tracker.child_2
+  process:
+   - sensor.cpu_use
+   - sensor.disk_free_
+   - sensor.disk_use_
+   - sensor.disk_use_home
+   - sensor.disk_use_home_2
+   - sensor.ram_free
+   - sensor.ram_use
+   - sensor.ram_use_2
 #
 #process:
 #  # items are which processes to look for: <entity_id>: <search string within ps>
