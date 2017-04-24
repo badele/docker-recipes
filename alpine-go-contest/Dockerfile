@@ -1,8 +1,7 @@
-FROM alpine
+FROM badele/alpine-go-minimal
 MAINTAINER Bruno Adelé "bruno@adele.im"
 
-COPY go-contest /usr/local/bin/
-COPY config.sh /etc/go-contest.config.sh
+COPY go-contest /
+RUN chmod +x /go-contest
 
-RUN chmod +x /usr/local/bin/go-contest
-RUN chmod +x /etc/go-contest.config.sh
+CMD /go-contest
