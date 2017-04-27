@@ -1,7 +1,7 @@
 FROM badele/alpine-go-minimal
 MAINTAINER Bruno Adelé "bruno@adele.im"
 
-RUN apk add --no-cache sqlite
+RUN apk add --no-cache sqlite ca-certificates
 
 RUN mkdir -p /opt/go-contest
 COPY go-contest /opt/go-contest/go-contest
