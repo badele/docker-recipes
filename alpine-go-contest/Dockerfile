@@ -10,9 +10,8 @@ RUN ln -s /opt/go-contest/go-contest /usr/local/bin/go-contest
 
 COPY create_database.sql /opt/go-contest/
 
-COPY create_database.sh /opt/go-contest/create_database.sh
-RUN ln -s /opt/go-contest/create_database.sh /usr/local/bin/create_database.sh
-RUN chmod +x /opt/go-contest/create_database.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["create_database.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["go-contest"]
