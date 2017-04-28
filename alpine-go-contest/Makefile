@@ -13,6 +13,6 @@ build: ## Build environment
 	docker build . -t badele/alpine-go-contest:latest
 
 push:
-	Echo "Please enter docker login password :"
+	echo "Please enter docker login password :"
 	docker login --username=badele
 	docker push badele/alpine-go-contest:latest
