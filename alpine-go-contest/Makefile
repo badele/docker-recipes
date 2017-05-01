@@ -7,7 +7,7 @@ deps: ## Get dependencies
 	cd $PRIVATE/go-contest/ go get ./...
 
 build: ## Build environment
-	cd ${PRIVATE}/go-contest/ && go build -a -v -o go-contest main.go
+	docker run --rm -v "${PRIVATE}/go-contest":/usr/src/myapp -w /usr/src/myapp golang:1.8 bash -c 'make build'
 	cp ${PRIVATE}/go-contest/create_database.sql .
 	cp ${PRIVATE}/go-contest/go-contest .
 	docker build . -t badele/alpine-go-contest:latest
