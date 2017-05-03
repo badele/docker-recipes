@@ -12,6 +12,6 @@ docker run --restart=always -ti \
 -e FROM="" \
 -e TO="" \
 -v /opt/$APPNAME/data:/opt/$APPNAME/data \
-badele/alpine-go-contest
+badele/32bits-alpine-go-contest
 ```
 
