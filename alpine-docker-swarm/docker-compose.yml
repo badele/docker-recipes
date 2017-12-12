@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+    node-1:
+        hostname: node-1
+        image: docker:1.12-dind
+        restart: always
+        tty: true
+        privileged: true
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        command: [
+            '--log-level', 'debug',
+            '--storage-driver', 'overlay',
+        ]
+    node-2:
+        hostname: node-2
+        image: docker:1.12-dind
+        restart: always
+        tty: true
+        privileged: true
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        command: [
+            '--log-level', 'debug',
+            '--storage-driver', 'overlay',
+        ]
+    node-3:
+        hostname: node-3
+        image: docker:1.12-dind
+        restart: always
+        tty: true
+        privileged: true
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        command: [
+            '--log-level', 'debug',
+            '--storage-driver', 'overlay',
+        ]
