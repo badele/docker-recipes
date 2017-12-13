@@ -1,14 +1,5 @@
 #
 
-```
-yaourt -S glusterfs
-
-# Note: if you have this message 'is either already part of another cluster or having volumes configured', remember remove your /data/docker/gluster-x contents (see "Reset storage (WARNING LOST ALL DATA)" section)
-
-```
-docker-compose up
-```
-
 You can execute bellow in one pass and one time
 ```
 # Init gluster nodes
