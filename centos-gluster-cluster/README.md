@@ -69,24 +69,29 @@ docker exec -ti gluster_node-1_1 sh -c 'gluster peer probe node-2 && gluster pee
 docker exec -ti gluster_node-2_1 sh -c 'gluster peer probe node-1 && gluster peer probe node-3 && gluster peer status'
 docker exec -ti gluster_node-3_1 sh -c 'gluster peer probe node-1 && gluster peer probe node-2 && gluster peer status'
 
+# Get node IPs
+NODE1=$(docker inspect gluster_node-1_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
+NODE2=$(docker inspect gluster_node-2_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
+NODE3=$(docker inspect gluster_node-3_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
+
 # Init service-a volume
 docker exec -ti gluster_node-1_1 sh -c \
-'gluster volume create dockerstore replica 3 node-1:/data/glusterfs/store/dockerstore node-2:/data/glusterfs/store/dockerstore node-3:/data/glusterfs/store/dockerstore'
+"gluster volume create dockerstore replica 3 $NODE1:/data/glusterfs/store/dockerstore $NODE2:/data/glusterfs/store/dockerstore $NODE3:/data/glusterfs/store/dockerstore"
 
 # Start volume
 docker exec -ti gluster_node-1_1 sh -c 'gluster volume start dockerstore'
 docker exec -ti gluster_node-1_1 sh -c 'gluster volume info && gluster volume status'
 
 # Mount from docker
-NODESERVER=$(docker inspect gluster_node-1_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
 docker plugin install sapk/plugin-gluster
-docker volume create --driver sapk/plugin-gluster --opt voluri="$NODESERVER:dockerstore" --name dockerstore
+docker volume create --driver sapk/plugin-gluster --opt voluri="$NODE1:dockerstore" --name dockerstore
 docker run -v dockerstore:/mnt --rm -ti ubuntu
 ```
 
 
 # Reset storage (WARNING LOST ALL DATA)
 ```
-bash -c 'docker stop $(docker ps -a | grep "gluster_" | awk \'{ print $1}\') &&  docker rm $(docker ps -a | grep "gluster_" | awk \'{ print $1}\')'
+# Running in fish terminal (force bash terminal)
+docker stop $(docker ps -a | grep "gluster_" | awk \'{ print $1}\') &&  docker rm $(docker ps -a | grep "gluster_" | awk \'{ print $1}\')
 sudo rm -rf /data/docker/gluster-*
 ```
