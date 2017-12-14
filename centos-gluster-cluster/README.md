@@ -1,5 +1,12 @@
 #
 
+```
+docker-compose up
+```
+
+# Full container demo
+
+## Init cluster & volume
 You can execute bellow in one pass and one time
 ```
 # Init gluster nodes
@@ -32,7 +39,7 @@ docker exec -ti gluster_service-b-2_1 sh -c 'mkdir -p /mnt/glusterfs/data'
 docker exec -ti gluster_service-b-2_1 sh -c 'mount -t glusterfs node-1:/service-b /mnt/glusterfs/data'
 ```
 
-# Verify data
+## Verify data
 
 You can execute bellow in one pass
 ```
@@ -54,6 +61,29 @@ echo
 echo "== Content file for service b node 1 =="
 docker exec -ti gluster_service-b-2_1 sh -c 'cat /mnt/glusterfs/data/distributed_file.txt'
 ```
+
+# GlusterFS server for docker containers
+```
+# Init gluster nodes
+docker exec -ti gluster_node-1_1 sh -c 'gluster peer probe node-2 && gluster peer probe node-3 && gluster peer status'
+docker exec -ti gluster_node-2_1 sh -c 'gluster peer probe node-1 && gluster peer probe node-3 && gluster peer status'
+docker exec -ti gluster_node-3_1 sh -c 'gluster peer probe node-1 && gluster peer probe node-2 && gluster peer status'
+
+# Init service-a volume
+docker exec -ti gluster_node-1_1 sh -c \
+'gluster volume create dockerstore replica 3 node-1:/data/glusterfs/store/dockerstore node-2:/data/glusterfs/store/dockerstore node-3:/data/glusterfs/store/dockerstore'
+
+# Start volume
+docker exec -ti gluster_node-1_1 sh -c 'gluster volume start dockerstore'
+docker exec -ti gluster_node-1_1 sh -c 'gluster volume info && gluster volume status'
+
+# Mount from docker
+NODESERVER=$(docker inspect gluster_node-1_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
+docker plugin install sapk/plugin-gluster
+docker volume create --driver sapk/plugin-gluster --opt voluri="$NODESERVER:dockerstore" --name dockerstore
+docker run -v dockerstore:/mnt --rm -ti ubuntu
+```
+
 
 # Reset storage (WARNING LOST ALL DATA)
 ```
