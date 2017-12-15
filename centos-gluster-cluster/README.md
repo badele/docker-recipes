@@ -84,7 +84,7 @@ docker exec -ti gluster_node-1_1 sh -c 'gluster volume info && gluster volume st
 
 # Mount from docker
 docker plugin install sapk/plugin-gluster
-docker volume create --driver sapk/plugin-gluster --opt voluri="$NODE1:dockerstore" --name dockerstore
+docker volume create --driver sapk/plugin-gluster --opt voluri="$NODE1,$NODE2,$NODE3:dockerstore" --name dockerstore
 docker run -v dockerstore:/mnt --rm -ti ubuntu
 ```
 
