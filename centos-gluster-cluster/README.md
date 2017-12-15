@@ -70,11 +70,11 @@ docker exec -ti gluster_node-2_1 sh -c 'gluster peer probe node-1 && gluster pee
 docker exec -ti gluster_node-3_1 sh -c 'gluster peer probe node-1 && gluster peer probe node-2 && gluster peer status'
 
 # Get node IPs
-NODE1=$(docker inspect gluster_node-1_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
-NODE2=$(docker inspect gluster_node-2_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
-NODE3=$(docker inspect gluster_node-3_1 | grep '"IPAddress"' | egrep -o "[0-9+\.]+")
+NODE1=$(docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" gluster_node-1_1)
+NODE2=$(docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" gluster_node-2_1)
+NODE3=$(docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" gluster_node-3_1)
 
-# Init service-a volume
+# Init dockerstore volume
 docker exec -ti gluster_node-1_1 sh -c \
 "gluster volume create dockerstore replica 3 $NODE1:/data/glusterfs/store/dockerstore $NODE2:/data/glusterfs/store/dockerstore $NODE3:/data/glusterfs/store/dockerstore"
 
