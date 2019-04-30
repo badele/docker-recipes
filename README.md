@@ -3,6 +3,9 @@
 
 Sorted by recently update
 
+2019-04 - [badele/vigilo-notebooks](https://cloud.docker.com/repository/docker/badele/vigilo-notebooks) | [vigilo-backend](https://github.com/jesuisundesdeux/docker-vigilo-notebooks)
+
+
 2019-04 - [badele/vigilo-backend](https://cloud.docker.com/u/badele/repository/docker/badele/vigilo-backend) | [vigilo-backend](https://github.com/jesuisundesdeux/docker-vigilo-backend/tree/php-7.2)
 
 2019-02 - [badele/overpass-api](https://cloud.docker.com/u/badele/repository/docker/badele/overpass-api) | [ubuntu-overpass-api](https://github.com/jesuisundesdeux/docker-overpass-api)
